@@ -47,11 +47,9 @@ jobs:
         run: |
           ssh -o StrictHostKeyChecking=no ubuntu@15.206.49.45 << 'EOF'
             cd /var/www/html/sri-ram-temple
-            git pull origin master
-            sudo composer update --ignore-platform-reqs --no-interaction --prefer-dist --optimize-autoloader
+            sudo git pull origin master
+            sudo composer update --ignore-platform-reqs
             php artisan migrate --force
-            php artisan config:cache
-            php artisan route:cache
-            php artisan view:cache
+            php artisan op:cl
             sudo systemctl restart httpd
           EOF
