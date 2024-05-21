@@ -39,7 +39,7 @@
                     </div>
                       <div class="form-group row mb-0">
                         <button type="submit" class="border-radius btn-orange btn orange w-100">
-                            {{ __('Login') }}
+                            {{ __('Login to temple') }}
                         </button>
                 </div>
                 </form>
