@@ -6,7 +6,7 @@
       @include('shared.searchable')
         <div class="col-md-3">
             <div class="card">
-                <div class="card-header text-center border-bottom-0">Total Donors</div>
+                <div class="card-header text-center border-bottom-0">Total Donors Count</div>
 
                 <div class="card-body">
                 <h1 class="text-center">{{ $total_donor }}</h1>
@@ -15,7 +15,7 @@
         </div>
         <div class="col-md-3">
             <div class="card">
-                <div class="card-header text-center border-bottom-0">This Month Donors</div>
+                <div class="card-header text-center border-bottom-0">This Month Donors Count</div>
 
                 <div class="card-body">
               <h1 class="text-center">{{ $month_donor }}</h1>
@@ -24,7 +24,7 @@
         </div>
         <div class="col-md-3">
             <div class="card">
-                <div class="card-header text-center border-bottom-0">Today Donors</div>
+                <div class="card-header text-center border-bottom-0">Today Donors Count</div>
 
                 <div class="card-body">
               <h1 class="text-center">{{ $today_donor }}</h1>
