@@ -42,7 +42,7 @@ jobs:
           username: ${{ secrets.DEPLOY_USER }}
           key: ${{ secrets.DEPLOY_KEY }}
           script: |
-            cd /var/www/your-laravel-project
+            cd /var/www/html/sri-ram-temple
             git pull origin master
             composer install --ignore-platform-reqs --no-interaction --prefer-dist --optimize-autoloader
             php artisan migrate --force
