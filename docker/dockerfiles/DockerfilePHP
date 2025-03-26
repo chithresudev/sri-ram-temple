@@ -1,0 +1,50 @@
+FROM php:7.2-apache
+
+# Install dependencies and PHP extensions in one step to reduce layers
+RUN apt-get update && apt-get install -y \
+    zip \
+    curl \
+    libpng-dev \
+    libonig-dev \
+    libxml2-dev \
+    libzip-dev \
+    && apt-get clean && rm -rf /var/lib/apt/lists/*
+
+# Install PHP extensions needed by Laravel
+RUN docker-php-ext-install zip pdo pdo_mysql mbstring bcmath gd mysqli \
+    && docker-php-ext-enable gd
+
+# Install Composer (ensure you're using a version compatible with Laravel 5.7)
+COPY --from=composer:2.2 /usr/bin/composer /usr/local/bin/composer
+
+# Apache configuration for Laravel
+COPY ./docker/apache/dev-site.conf /etc/apache2/sites-available/
+RUN a2dissite 000-default && a2ensite dev-site.conf
+
+# Enable Apache mods for URL rewriting
+RUN a2enmod rewrite headers && service apache2 restart
+
+# Set timezone (adjust as per your region)
+ENV TZ=Asia/Kolkata
+RUN ln -snf /usr/share/zoneinfo/$TZ /etc/localtime && echo $TZ > /etc/timezone
+
+# PHP configuration values
+#COPY ./php.ini /usr/local/etc/php/
+
+# Clean up apt and remove unnecessary packages
+RUN apt-get autoremove -y && rm -rf /var/lib/apt/lists/*
+
+# Restart Apache service to apply all configurations
+RUN service apache2 restart
+
+# Set memory and upload limits in the environment (to be consistent across all containers)
+ENV PHP_MEMORY_LIMIT=1024M
+ENV memory_limit=1024M
+ENV post_max_size=512M
+ENV upload_max_filesize=1000M
+
+# Expose the default port for Apache
+EXPOSE 80
+
+# Start Apache when the container starts
+CMD ["apache2-foreground"]

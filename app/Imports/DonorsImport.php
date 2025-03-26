@@ -8,26 +8,44 @@ use Maatwebsite\Excel\Concerns\ToModel;
 class DonorsImport implements ToModel
 {
     /**
-    * @param array $row
-    *
-    * @return \Illuminate\Database\Eloquent\Model|null
-    */
+     * @param array $row
+     *
+     * @return \Illuminate\Database\Eloquent\Model|null
+     */
     public function model(array $row)
     {
-        // if (count($row) > 2 && $row[1] != 'Name') {
-           $donor = new Donor;
-           $donor->name = $row[0];
-           $donor->phone = $row[1];
-           $donor->doorno = $row[2];
-           $donor->address1 = $row[3];
-           $donor->address2 = $row[4];
-           $donor->district = $row[5];
-           $donor->state = $row[6];
-           $donor->pincode = intval($row[7]);
-           // $donor->type = $row[9];
-           // $donor->others_detail = $row[9];
-           $donor->save();
-           return $donor;
-        // }
+
+        // Skip invalid rows where a column might be missing or empty
+        if (empty($row[1]) || empty($row[2]) || empty($row[3])) {
+            return null; // Skip this row
+        }
+
+        // Validate pincode (6 digits only)
+        $pincode = isset($row[7]) && is_numeric($row[7]) && strlen($row[7]) == 7 ? intval($row[7]) : null;
+
+        // Validate phone numbers (10 digits only)
+        $phone1 = isset($row[8]) && preg_match('/^\d{10}$/', $row[8]) ? $row[8] : null;
+        $phone2 = isset($row[9]) && preg_match('/^\d{10}$/', $row[9]) ? $row[9] : null;
+
+        // Create and return a new Donor instance with the row data
+        return new Donor([
+            'name' => $row[1],
+            'address1' => $row[2],
+            'address2' => $row[3],
+            'city' => $row[4],
+            'district' => $row[5],
+            'state' => $row[6],
+            'pincode' => $pincode,
+            'phone1' => $phone1,
+            'phone2' => $phone2,
+        ]);
+    }
+
+    /**
+     * @return int
+     */
+    public function startRow(): int
+    {
+        return 2;
     }
 }

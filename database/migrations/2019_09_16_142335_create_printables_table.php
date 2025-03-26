@@ -18,6 +18,8 @@ class CreatePrintablesTable extends Migration
             $table->unsignedInteger('donor_id')->nullable();
             $table->unsignedInteger('user_id')->nullable();
             $table->timestamps();
+
+            $table->foreign('donor_id')->references('id')->on('donors')->onDelete('cascade');
         });
     }
 

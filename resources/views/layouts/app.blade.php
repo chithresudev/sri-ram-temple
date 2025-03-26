@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
+
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -7,7 +8,7 @@
     <!-- CSRF Token -->
     {{-- <meta name="csrf-token" content="{{ csrf_token() }}"> --}}
 
-    <title>{{ ('ஶீ பெரியநாயகி அம்மன் திருக்கோவில்') }}</title>
+    <title>{{ 'ஶீ பெரியநாயகி அம்மன் திருக்கோவில்' }}</title>
 
     <!-- Fonts -->
 
@@ -20,16 +21,19 @@
 
     @stack('styles')
 </head>
+
 <body>
     <!-- Header Section -->
     @php
-      $route = Route::currentRouteName();
+        $route = Route::currentRouteName();
     @endphp
 
     @if ($route != 'login')
-      <header>@include('shared.navbar')</header>
-      <aside>@include('shared.sidebar')</aside>
+        <header>@include('shared.navbar')</header>
+        <aside>@include('shared.sidebar')</aside>
     @endif
+
+
 
     <!-- Main Section -->
     <main>
@@ -39,12 +43,13 @@
     <!-- Footer Section -->
     <footer></footer>
 
-     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
     <script src="{{ asset('js/jquery-3.3.1.min.js') }}"></script>
     {{-- <script src="{{ asset('js/popper.min.js') }}"></script> --}}
-    <script src="{{  asset('js/bootstrap.min.js') }}"></script>
+    <script src="{{ asset('js/bootstrap.min.js') }}"></script>
     <script src="{{ asset('js/feather.min.js') }}"></script>
     {{-- <script src="{{ asset('js/kovil.js') }}"></script> --}}
     @stack('script')
 </body>
+
 </html>

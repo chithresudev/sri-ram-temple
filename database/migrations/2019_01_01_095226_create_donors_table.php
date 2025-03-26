@@ -16,21 +16,22 @@ class CreateDonorsTable extends Migration
         Schema::create('donors', function (Blueprint $table) {
             $table->increments('id');
             $table->string('name')->nullable();
-            $table->string('phone')->nullable();
-            $table->string('doorno')->nullable();
             $table->string('address1')->nullable();
             $table->string('address2')->nullable();
-            $table->string('district');
-            $table->string('state');
-            $table->integer('pincode');
+            $table->string('city')->nullable();
+            $table->string('district')->nullable();
+            $table->string('state')->nullable();
+            $table->integer('pincode')->nullable();
+            $table->string('phone1')->nullable();
+            $table->string('phone2')->nullable();
             $table->string('dob')->nullable();
             $table->string('rasi')->nullable();
             $table->string('natchathiram')->nullable();
             $table->enum('type', [
-              'monthly',
-              'festival',
-              'laksha',
-              'others'
+                'monthly',
+                'festival',
+                'laksha',
+                'others'
             ]);
 
             $table->string('others_detail')->nullable();

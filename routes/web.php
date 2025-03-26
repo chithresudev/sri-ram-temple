@@ -37,9 +37,11 @@ Route::get('donor/tcpdf', 'TCPDFController@printall')->name('tcpdf.printall');
 
 Route::get('dashboard', 'Dashboard\DashboardController@index')->name('dashboard');
 
-Route::namespace('Donor')->group(function(){
-  Route::prefix('donors')->group(function(){
-   Route::name('donors.')->group(function(){
+Route::namespace('Donor')->group(function () {
+  Route::prefix('donors')->group(function () {
+    Route::name('donors.')->group(function () {
+
+      Route::get('print-address', 'DonorController@printAddress')->name('printAddress');
 
       Route::get('create', 'DonorController@index')->name('create');
       Route::post('store', 'DonorController@store')->name('store');
@@ -47,13 +49,12 @@ Route::namespace('Donor')->group(function(){
       Route::post('import', 'DonorController@import')->name('import');
       Route::get('{donor}/all-details', 'DonorController@donarDetails')->name('donardetails');
       Route::post('{donor}/donation-amount', 'DonorController@donationAmt')->name('donationAmt');
-      Route::get('{donor}/actions', 'DonorController@otherAction')->name('otheraction');
+      Route::get('{donation}/actions', 'DonorController@otherAction')->name('otheraction');
+      Route::get('{family}/family-removed', 'DonorController@removeFamily')->name('removeFamily');
+      Route::get('{donor}/donor-remove', 'DonorController@removeDonor')->name('removeDonor');
 
       Route::post('search/', 'DonorController@searchable')->name('searchable');
-
-
     });
-
   });
 });
 

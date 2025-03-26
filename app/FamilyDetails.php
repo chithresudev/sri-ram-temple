@@ -11,7 +11,7 @@ class FamilyDetails extends Model
 
   public function donor()
   {
-      return $this->belongsTo('App\Donor');
+    return $this->belongsTo('App\Donor');
   }
 
   public function getFamilyHeadAttribute()
@@ -22,7 +22,6 @@ class FamilyDetails extends Model
   public function getBirthdayAttribute()
   {
     $string = Carbon::parse($this->dob)->age;
-    return $string . 'th';
+    return $string . ' Age';
   }
-
 }
