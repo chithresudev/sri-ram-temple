@@ -1,0 +1,32 @@
+services:
+    db:
+        image: mysql:8.0 # Use MySQL version 8.0
+        restart: always
+        environment:
+            MYSQL_ROOT_PASSWORD: sq1compli
+            MYSQL_DATABASE: sq1compli # Initial database
+        volumes:
+            - ./docker/mysqldata:/var/lib/mysql # Data persistence
+            - ./docker/mysql/createDevDB.sql:/docker-entrypoint-initdb.d/createDevDB.sql # Initialization script
+            - ./docker/mysql/my.cnf:/etc/mysql/my.cnf # Custom MySQL config file
+    php:
+        build:
+            context: . # Build from current directory
+            dockerfile: docker/DockerfilePHP # Specify Dockerfile path for PHP
+            args:
+                buildno: 1.0 # Optional build argument
+        image: sriramapp # Name of the custom PHP image
+        volumes:
+            - .:/var/www/html # Mount current directory to the web root
+        working_dir: /var/www/html # Set the working directory
+        ports:
+            - "8082:80" # Map port 80 for web access
+        depends_on:
+            - db # Ensure database starts first
+    adminer:
+        image: adminer:4.8.1 # Adminer version 4.8.1
+        restart: always
+        ports:
+            - "8083:8080" # Access Adminer at port 8002
+        depends_on:
+            - db # Start Adminer after the database
