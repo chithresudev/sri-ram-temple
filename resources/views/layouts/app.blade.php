@@ -8,7 +8,7 @@
     <!-- CSRF Token -->
     {{-- <meta name="csrf-token" content="{{ csrf_token() }}"> --}}
 
-    <title>{{ 'ஶீ பெரியநாயகி அம்மன் திருக்கோவில்' }}</title>
+    <title>{{ 'ஸ்ரீ பெத்தாரண சுவாமி திருக்கோவில்' }}</title>
 
     <!-- Fonts -->
 

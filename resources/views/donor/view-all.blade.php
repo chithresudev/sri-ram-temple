@@ -17,15 +17,16 @@
                 <div class="card k-card">
                     {{ session(['ids' => $donors->pluck('id')]) }}
                     <div class="card-header">
-                        All Donors ({{ count($donors) }})
+                        All Devotee ({{ count($donors) }})
                         <div class="float-right">
                             <a href="{{ route('donors.create') }}" class="btn btn-success btn-sm">
-                                Add Donors
+                                Add Devotee
                             </a>
                             {{-- <a href="{{ route('tcpdf.printall') }}" class="btn btn-primary btn-sm">Print All Address</a> --}}
-                            <a href="{{ route('donors.printAddress') }}" target="_blank"
-                                class="btn btn-primary btn-sm">Print All
-                                Address</a>
+                            <a href="{{ route('donors.printAddress') }}" target="_blank" class="btn btn-primary btn-sm">A4
+                                Print</a>
+                            <a href="{{ route('donors.labelPrintAddress') }}" target="_blank"
+                                class="btn btn-primary btn-sm">Thermal Label Print</a>
                         </div>
                     </div>
 
@@ -100,17 +101,7 @@
 
             });
 
-            //   var ids = $('#donor-ids').attr('donor-ids');
-            //   alert(ids);
-            //
-            //   $('#print_all').click(function(){
-            //   var data_url = $(this).data('url');
-            //   // var params = $('#search').serialize();
-            //   var filterby = $('#filterby').val();
-            //   var value = $('#searchby').val();
-            //   var url = data_url + "?filterby="+ filterby + "&searchby=" +  value;
-            //   window.location.href = url;
-            // });
+
 
         });
     </script>

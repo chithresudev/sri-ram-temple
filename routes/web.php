@@ -42,6 +42,7 @@ Route::namespace('Donor')->group(function () {
     Route::name('donors.')->group(function () {
 
       Route::get('print-address', 'DonorController@printAddress')->name('printAddress');
+      Route::get('label-print-address', 'DonorController@labelPrintAddress')->name('labelPrintAddress');
 
       Route::get('create', 'DonorController@index')->name('create');
       Route::post('store', 'DonorController@store')->name('store');

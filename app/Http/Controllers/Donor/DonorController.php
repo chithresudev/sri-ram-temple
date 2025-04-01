@@ -32,9 +32,6 @@ class DonorController extends Controller
   public function index()
   {
     return view('donor.create');
-    //
-    // $donors = Donor::paginate(5);
-    // return view('donor.donors', ['donors' => $donors]);
   }
 
   /**
@@ -101,7 +98,7 @@ class DonorController extends Controller
         $family->save();
       }
     }
-    return redirect()->route('donors.create')->with('status', 'New Donor Added Successfully!');
+    return redirect()->route('donors.create')->with('status', 'New Devotee Added Successfully!');
   }
 
   /**
@@ -153,41 +150,6 @@ class DonorController extends Controller
     }
   }
 
-  public function edit(Donor $donor)
-  {
-    return 'ok';
-  }
-
-  /**
-   * Update the specified in donors.
-   *
-   */
-  public function update(Request $request, Donor $donor)
-  {
-    $donor->name = $request->name;
-    $donor->phone = $request->phone;
-    $donor->doorno = $request->door_no;
-    $donor->address1 = $request->address1;
-    $donor->address2 = $request->address2;
-    $donor->district = $request->district;
-    $donor->state = $request->state;
-    $donor->pincode = $request->pincode;
-    $donor->type = $request->type;
-    $donor->others_detail = $request->others_detail;
-    $donor->save();
-
-    return redirect()->route('donors.index');
-  }
-
-  /**
-   * Remove the specified resource from storage.
-   *
-   * @param  \App\Donor  $donor
-   * @return \Illuminate\Http\Response
-   */
-  public function destroy(Donor $donor) {}
-
-
 
   /**
    * Display a listing of the donations.
@@ -227,11 +189,22 @@ class DonorController extends Controller
   {
     $query = app('request');
 
-    if ($query->filter_by == 'all') {
-      $donors = Donor::get();
+    $donors = Donor::query();
+
+    if ($query->filter_by != 'all') {
+      if ($query->filter_by && $query->search_by) {
+        $donors = $donors->where($query->filter_by, 'like', '%' . $query->search_by . '%');
+      }
+
+      if ($query->filter_by_2 && $query->search_by_2) {
+        $donors = $donors->where($query->filter_by_2, 'like', '%' . $query->search_by_2 . '%');
+      }
     } else {
-      $donors = Donor::where($query->filter_by, 'like', '%' . $query->search_by . '%')->get();
+      $donors =  $donors;
     }
+
+    $donors =  $donors->get();
+
     return view('donor.view-all', ['donors' => $donors]);
   }
 
@@ -257,7 +230,7 @@ class DonorController extends Controller
   public function removeDonor(Donor $donor)
   {
     $donor->delete();
-    return back()->with('status', 'Removed Successfully Donor!');
+    return back()->with('status', 'Removed Successfully Devotee!');
   }
 
   public function printAddress()
@@ -279,12 +252,41 @@ class DonorController extends Controller
       for ($i = 0; $i < count($session_id); $i++) {
         $print = new Printable;
         $print->user_id = auth()->user()->id;
-        $print->donor_id = $session_id[$i];
+        $print->donor_id = $session_id[$i] ?? null;
         $print->save();
       }
       $donors = Donor::whereIn('id', $session_id)->get();
     }
 
     return view('donor.print-address', compact('donors'));
+  }
+
+
+  public function labelPrintAddress()
+  {
+    $query = app('request');
+    $session_id = session('ids');
+
+
+    if ($query->has('id')) {
+
+      $print = new Printable();
+      $print->user_id = auth()->user()->id;
+      $print->donor_id = $query->id;
+      $print->save();
+
+      $donors = Donor::where('id', $query->id)->get();
+    } else {
+
+      for ($i = 0; $i < count($session_id); $i++) {
+        $print = new Printable;
+        $print->user_id = auth()->user()->id;
+        $print->donor_id = $session_id[$i] ?? null;
+        $print->save();
+      }
+      $donors = Donor::whereIn('id', $session_id)->get();
+    }
+
+    return view('donor.label-print-address', compact('donors'));
   }
 }

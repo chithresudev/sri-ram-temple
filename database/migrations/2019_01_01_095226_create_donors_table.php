@@ -32,7 +32,7 @@ class CreateDonorsTable extends Migration
                 'festival',
                 'laksha',
                 'others'
-            ]);
+            ])->nullable();
 
             $table->string('others_detail')->nullable();
             $table->timestamps();

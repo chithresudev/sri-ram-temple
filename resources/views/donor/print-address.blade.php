@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Donor Details</title>
+    <title>Devotee Details</title>
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -98,12 +98,16 @@
 
 <body>
     <div class="donor-list">
-        @foreach ($donors->chunk(2) as $donorChunk)
+        @foreach ($donors->chunk(3) as $donorChunk)
             <div style="width: 100%; display: flex; justify-content: space-between; margin-bottom: 20px;">
                 @foreach ($donorChunk as $donor)
                     <div class="donor">
                         <h3>{{ $donor->name }}</h3>
-                        <p>{{ $donor->address }}</p>
+
+                        <p>{{ $donor->address1 }},</p>
+                        <p>{{ $donor->address2 }},</p>
+                        <p>{{ $donor->city }},</p>
+                        <p>{{ str_before($donor->district, '_') . ', ' . $donor->state . ' - ' . $donor->pincode }}</p>
                         <p>Phone: {{ $donor->phone_details }}</p>
                     </div>
                 @endforeach

@@ -11,14 +11,16 @@
             <div class="modal-body">
                 <form action="{{ route('donors.import') }}" method="post" enctype='multipart/form-data'>
                     @csrf
-                    <div class="form-group">
-                        <div class="custom-file">
 
-                            <input type="file" class="custom-file-input" accept=".xls,.xlsx,.csv" id="donor"
-                                name="donor" required>
-                            <label class="custom-file-label" for="donor">Choose file</label>
-                        </div>
+                    <div class="custom-file mb-3">
+                        <input type="file" class="custom-file-input" accept=".xls,.xlsx,.csv" id="donor"
+                            name="donor" required>
+                        <label class="custom-file-label" for="validatedCustomFile">Choose file...</label>
+
                     </div>
+
+
+
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
@@ -28,3 +30,11 @@
         </div>
     </div>
 </div>
+
+<script>
+    // JavaScript to update the label with the selected file name
+    document.getElementById('donor').addEventListener('change', function(e) {
+        var fileName = e.target.files[0] ? e.target.files[0].name : "Choose file...";
+        document.querySelector('.custom-file-label').textContent = fileName;
+    });
+</script>

@@ -15,14 +15,14 @@
                 @endif
                 <div class="pb-3 text-right">
                     <button class="btn btn-success btn-sm" data-target="#importbulkdata" data-toggle="modal"
-                        data-backdrop="static">Add Bulk Donors</button>
+                        data-backdrop="static">Add Bulk Devotee</button>
                 </div>
                 <div class="card custom-card">
                     <form action="{{ route('donors.store') }}" method="POST">
                         @csrf
                         <div class="card-body">
 
-                            <div class="custom-card-title">Add Donor Details</div>
+                            <div class="custom-card-title">Add Devotee Details</div>
                             <div class="form-row custom-form-row">
                                 <div class="col-md-4">
                                     <label for="name">Name
@@ -53,7 +53,7 @@
                             <div class="form-row custom-form-row">
 
                                 <div class="col-md-4">
-                                    <label for="name">City
+                                    <label for="name">Locality
                                         <span class="required">*</span>
                                     </label>
                                     <input type="text" class="form-control" name="city" id="city" required>
@@ -64,7 +64,48 @@
                                         <span class="required">*</span>
                                     </label>
                                     <select name="state" class="custom-select" id="state" required>
-                                        <option value="Tamilnadu">Tamil Nadu - தமிழ்நாடு</option>
+                                        <option value="" disabled selected>Select a State</option>
+                                        <!-- States -->
+                                        <option value="andhra_pradesh">Andhra Pradesh - ஆந்திரப் பிரதேசம்</option>
+                                        <option value="arunachal_pradesh">Arunachal Pradesh - அருணாசலப் பிரதேசம்</option>
+                                        <option value="assam">Assam - அசாம்</option>
+                                        <option value="bihar">Bihar - பீகார்</option>
+                                        <option value="chhattisgarh">Chhattisgarh - சத்தீஸ்கர்</option>
+                                        <option value="goa">Goa - கோவா</option>
+                                        <option value="gujarat">Gujarat - குஜராத்</option>
+                                        <option value="haryana">Haryana - ஹரியானா</option>
+                                        <option value="himachal_pradesh">Himachal Pradesh - ஹிமாச்சல் பிரதேசம்</option>
+                                        <option value="jharkhand">Jharkhand - ஜார்க்கண்ட்</option>
+                                        <option value="karnataka">Karnataka - கர்நாடகா</option>
+                                        <option value="kerala">Kerala - கேரளா</option>
+                                        <option value="madhya_pradesh">Madhya Pradesh - மத்தியப் பிரதேசம்</option>
+                                        <option value="maharashtra">Maharashtra - மஹாராஷ்டிரா</option>
+                                        <option value="manipur">Manipur - மணிப்பூர்</option>
+                                        <option value="meghalaya">Meghalaya - மேகாலயா</option>
+                                        <option value="mizoram">Mizoram - மிசோரம்</option>
+                                        <option value="nagaland">Nagaland - நாகாலாந்து</option>
+                                        <option value="odisha">Odisha - ஒடிசா</option>
+                                        <option value="punjab">Punjab - பஞ்சாப்</option>
+                                        <option value="rajasthan">Rajasthan - ராஜஸ்தான்</option>
+                                        <option value="sikkim">Sikkim - சிக்கிம்</option>
+                                        <option value="tamil_nadu">Tamil Nadu - தமிழ்நாடு</option>
+                                        <option value="telangana">Telangana - தெலங்கானா</option>
+                                        <option value="tripura">Tripura - திரிபுரா</option>
+                                        <option value="uttar_pradesh">Uttar Pradesh - உத்தரப் பிரதேசம்</option>
+                                        <option value="uttarakhand">Uttarakhand - உத்தரக்கண்ட்</option>
+                                        <option value="west_bengal">West Bengal - மேற்குவங்கம்</option>
+
+                                        <!-- Union Territories -->
+                                        <option value="andaman_nicobar_islands">Andaman and Nicobar Islands - அண்டமான்
+                                            மற்றும் நிகோபார் தீவுகள்</option>
+                                        <option value="chandigarh">Chandigarh - சந்திகர்</option>
+                                        <option value="dadar_nagar_haveli_daman_diu">Dadra and Nagar Haveli and Daman and
+                                            Diu - தாதிரா மற்றும் நகர அவிலி மற்றும் தர்மன் மற்றும் தீவு</option>
+                                        <option value="delhi">Delhi - டெல்லி</option>
+                                        <option value="lakshadweep">Lakshadweep - லட்சதீப்</option>
+                                        <option value="ladakh">Ladakh - லடாக்</option>
+                                        <option value="puducherry">Puducherry - புதுச்சேரி</option>
+                                        <option value="jammu_kashmir">Jammu and Kashmir - ஜம்மு மற்றும் காஷ்மீர்</option>
                                     </select>
 
                                 </div>
@@ -77,38 +118,43 @@
                                     </label>
 
                                     <select class="custom-select"name="district" id="district" required>
-                                        <option value="Ariyalur_அரியலூர்">Ariyalur - அரியலூர்</option>
-                                        <option value="Chengalpattu_செங்கல்பட்டு">Chengalpattu - செங்கல்பட்டு</option>
-                                        <option value="Chennai_சென்னை">Chennai - சென்னை</option>
-                                        <option value="Coimbatore_கோயம்புத்தூர்">Coimbatore - கோயம்புத்தூர்</option>
-                                        <option value="Cuddalore_குடியாத்தம்">Cuddalore - குடியாத்தம்</option>
-                                        <option value="Dharmapuri_தர்மபுரி">Dharmapuri - தர்மபுரி</option>
-                                        <option value="Dindigul_திண்டுக்கல்">Dindigul - திண்டுக்கல்</option>
-                                        <option value="Erode_ஈரோடு">Erode - ஈரோடு</option>
-                                        <option value="Kallakurichi_கள்ளக்குறிச்சி">Kallakurichi - கள்ளக்குறிச்சி</option>
-                                        <option value="Kancheepuram_காஞ்சிபுரம்">Kancheepuram - காஞ்சிபுரம்</option>
-                                        <option value="Kanyakumari_கன்னியாகுமரி">Kanyakumari - கன்னியாகுமரி</option>
-                                        <option value="Karur_கரூர்">Karur - கரூர்</option>
-                                        <option value="Krishnagiri_கிருஷ்ணகிரி">Krishnagiri - கிருஷ்ணகிரி</option>
-                                        <option value="Madurai_மதுரை">Madurai - மதுரை</option>
-                                        <option value="Nagapattinam_நாகப்பட்டினம்">Nagapattinam - நாகப்பட்டினம்</option>
-                                        <option value="Namakkal_நாமக்கல்">Namakkal - நாமக்கல்</option>
-                                        <option value="Nilgiris_நிலவேரி">Nilgiris - நிலவேரி</option>
-                                        <option value="Perambalur_பெரம்பலூர்">Perambalur - பெரம்பலூர்</option>
-                                        <option value="Pudukkottai_புதுக்கோட்டை">Pudukkottai - புதுக்கோட்டை</option>
-                                        <option value="Ramanathapuram_ராமநாதபுரம்">Ramanathapuram - ராமநாதபுரம்</option>
-                                        <option value="Salem_சேலம்">Salem - சேலம்</option>
-                                        <option value="Sivaganga_சிவகங்கை">Sivaganga - சிவகங்கை</option>
-                                        <option value="Tenkasi_தேன்காசி">Tenkasi - தேன்காசி</option>
-                                        <option value="Thanjavur_தஞ்சாவூர்">Thanjavur - தஞ்சாவூர்</option>
-                                        <option value="Nilgiris_தேனிலையர்கள்">Nilgiris - தேனிலையர்கள்</option>
-                                        <option value="Tirunelveli_திருநெல்வேலி">Tirunelveli - திருநெல்வேலி</option>
-                                        <option value="Tiruppur_திருப்பூர்">Tiruppur - திருப்பூர்</option>
-                                        <option value="Tiruvallur_திருவள்ளூர்">Tiruvallur - திருவள்ளூர்</option>
-                                        <option value="Tiruvannamalai_திருவண்ணாமலை">Tiruvannamalai - திருவண்ணாமலை</option>
-                                        <option value="Vellore_வேலூர்">Vellore - வேலூர்</option>
-                                        <option value="Viluppuram_விழுப்புரம்">Viluppuram - விழுப்புரம்</option>
-                                        <option value="Virudhunagar_விருதுநகர்">Virudhunagar - விருதுநகர்</option>
+                                        <option value="" disabled selected>Select a District</option>
+                                        <option value="ariyalur">Ariyalur - அரியலூர்</option>
+                                        <option value="chennai">Chennai - சென்னை</option>
+                                        <option value="coimbatore">Coimbatore - கோயம்புத்தூர்</option>
+                                        <option value="cuddalore">Cuddalore - குடாலூர்</option>
+                                        <option value="dharmapuri">Dharmapuri - தர்மபுரி</option>
+                                        <option value="dindigul">Dindigul - திண்டுக்கல்</option>
+                                        <option value="erode">Erode - ஈரோடு</option>
+                                        <option value="kancheepuram">Kancheepuram - காஞ்சிபுரம்</option>
+                                        <option value="kanyakumari">Kanyakumari - கன்னியாகுமரி</option>
+                                        <option value="karur">Karur - கரூர்</option>
+                                        <option value="krishnagiri">Krishnagiri - கிருஷ்ணகிரி</option>
+                                        <option value="madurai">Madurai - மதுரை</option>
+                                        <option value="nagapattinam">Nagapattinam - நாகப்பட்டினம்</option>
+                                        <option value="namakkal">Namakkal - நாமக்கல்</option>
+                                        <option value="perambalur">Perambalur - பெரம்பலூர்</option>
+                                        <option value="pudukkottai">Pudukkottai - புதுக்கோட்டை</option>
+                                        <option value="ramanathapuram">Ramanathapuram - ராமநாதபுரம்</option>
+                                        <option value="salem">Salem - சேலம்</option>
+                                        <option value="sivaganga">Sivaganga - சிவகங்கை</option>
+                                        <option value="tenkasi">Tenkasi - தென்காசி</option>
+                                        <option value="tiruchirappalli">Tiruchirappalli - திருச்சிராப்பள்ளி</option>
+                                        <option value="tirunelveli">Tirunelveli - திருநெல்வேலி</option>
+                                        <option value="tiruppur">Tiruppur - திருப்பூர்</option>
+                                        <option value="vellore">Vellore - வேலூர்</option>
+                                        <option value="villupuram">Villupuram - வில்லியபுரம்</option>
+                                        <option value="virudhunagar">Virudhunagar - விருதுநகர்</option>
+                                        <option value="thanjavur">Thanjavur - தஞ்சாவூர்</option>
+                                        <option value="theni">Theni - தெனி</option>
+                                        <option value="thoothukudi">Thoothukudi - தூத்துக்குடி</option>
+                                        <option value="nilgiris">The Nilgiris - நீலகிரி</option>
+                                        <option value="chengalpattu">Chengalpattu - சேங்கல்பட்டு</option>
+                                        <option value="ranipet">Ranipet - ராணிபேட்</option>
+                                        <option value="tiruvallur">Tiruvallur - திருவள்ளூர்</option>
+                                        <option value="tiruvarur">Tiruvarur - திருவாரூர்</option>
+                                        <option value="kallakurichi">Kallakurichi - கல்லக்குறிச்சி</option>
+                                        <option value="tirupathur">Tirupathur - திருப்பத்தூர்</option>
                                     </select>
                                 </div>
                             </div>
@@ -144,10 +190,10 @@
                             <div class="form-row custom-form-row">
                                 <div class="col-md-3">
                                     <label for="dob">பிறந்த தேதி
-                                        <span class="required">*</span>
+                                        {{-- <span class="required">*</span> --}}
                                     </label>
                                     <input type="date" maxlength="6" class="form-control" name="dob"
-                                        id="dob" required>
+                                        id="dob">
                                     <span id="invalid_dob"></span>
                                 </div>
                                 <div class="col-md-1">
@@ -157,8 +203,10 @@
                                 </div>
 
                                 <div class="col-md-4">
-                                    <label for="type">ராசி<span class="required">*</span></label>
-                                    <select class="custom-select" name="head_rasi" required="">
+                                    <label for="type">ராசி
+                                        {{-- <span class="required">*</span> --}}
+                                    </label>
+                                    <select class="custom-select" name="head_rasi">
                                         <option value="">Please Select ராசி...</option>
                                         <option value="மேஷம்">மேஷம் </option>
                                         <option value="ரிஷபம்">ரிஷபம் </option>
@@ -175,8 +223,10 @@
                                     </select>
                                 </div>
                                 <div class="col-md-4">
-                                    <label for="type">நட்சத்திரம்<span class="required">*</span></label>
-                                    <select class="custom-select" name="head_natchathiram" required="">
+                                    <label for="type">நட்சத்திரம்
+                                        {{-- <span class="required">*</span> --}}
+                                    </label>
+                                    <select class="custom-select" name="head_natchathiram">
                                         <option value="">Please Select நட்சத்திரம்...</option>
                                         <option value="அஸ்வினி_சரஸ்வதி தேவி">அஸ்வினி - சரஸ்வதி தேவி</option>
                                         <option value="பரணி_துர்கா தேவி">பரணி - துர்கா தேவி</option>
@@ -237,11 +287,15 @@
 
                             <div class="form-row custom-form-row">
                                 <div class="col-md-4">
-                                    <label for="type">Donation Type <span class="required">*</span></label>
-                                    <select class="custom-select" name="type" id="type" required>
+                                    <label for="type">Donation Type
+                                        {{-- <span class="required">*</span> --}}
+                                    </label>
+                                    <select class="custom-select" name="type" id="type">
                                         <option value="">Please Select</option>
-                                        <option value="monthly">Monthly Once</option>
-                                        <option value="festival"> Fesitival Seasons</option>
+                                        <option value="monthly_mail">Monthly Mail</option>
+                                        <option value="vilakku_pooja"> Vilakku Pooja</option>
+                                        <option value="thirupani"> Thirupani</option>
+                                        <option value="festival"> Fesitival</option>
                                         <option value="laksha">Laksha Archanai</option>
                                         <option value="others">Others</option>
                                     </select>
@@ -256,11 +310,13 @@
                                 </div>
 
                                 <div class="col-md-4">
-                                    <label for="type">When Donation Give?<span class="required">*</span></label>
-                                    <select class="custom-select" name="donation_type" id="donation_type" required>
+                                    <label for="type">When Donation Give?
+                                        {{-- <span class="required">*</span> --}}
+                                    </label>
+                                    <select class="custom-select" name="donation_type" id="donation_type">
                                         <option value="">Please Select</option>
-                                        <option value="now">Give Now </option>
-                                        <option value="later">Give Later</option>
+                                        <option value="now">Now </option>
+                                        <option value="later">Later</option>
                                     </select>
                                     <div class="pt-3 d-none" id="amount">
                                         <label for="dob">Amount</label>
@@ -269,8 +325,10 @@
                                     </div>
                                 </div>
                                 <div class="col-md-4">
-                                    <label for="family_type">Family Details?<span class="required">*</span></label>
-                                    <select class="custom-select" name="family_type" id="family_type" required>
+                                    <label for="family_type">Family Details?
+                                        {{-- <span class="required">*</span> --}}
+                                    </label>
+                                    <select class="custom-select" name="family_type" id="family_type">
                                         <option value="">Please Select</option>
                                         <option value="add_now">Add Now </option>
                                         <option value="add_later">Add Later</option>
