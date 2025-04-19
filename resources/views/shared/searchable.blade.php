@@ -44,8 +44,11 @@
             </div>
 
             <div class="col-md-2">
+
                 <a href="/donors/view" class="btn btn-danger">Clear</a>
                 <button type="submit" class="btn btn-primary">Search</button>
+
+
             </div>
         </div>
     </form>

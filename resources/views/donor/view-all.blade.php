@@ -19,14 +19,14 @@
                     <div class="card-header">
                         All Devotee ({{ count($donors) }})
                         <div class="float-right">
+                            <a href="/donors/view" class="btn btn-info  btn-sm">View All</a>
                             <a href="{{ route('donors.create') }}" class="btn btn-success btn-sm">
                                 Add Devotee
                             </a>
+
+
                             {{-- <a href="{{ route('tcpdf.printall') }}" class="btn btn-primary btn-sm">Print All Address</a> --}}
-                            <a href="{{ route('donors.printAddress') }}" target="_blank" class="btn btn-primary btn-sm">A4
-                                Print</a>
-                            <a href="{{ route('donors.labelPrintAddress') }}" target="_blank"
-                                class="btn btn-primary btn-sm">Thermal Label Print</a>
+
                         </div>
                     </div>
 
@@ -79,7 +79,16 @@
                         </div>
 
                     </div>
+
                 </div>
+                @if (count($donors))
+                    <div class="text-center mt-3">
+                        <a href="{{ route('donors.printAddress') }}" target="_blank" class="btn btn-primary">A4
+                            Print</a>
+                        <a href="{{ route('donors.labelPrintAddress') }}" target="_blank" class="btn btn-primary">Thermal
+                            Label Print</a>
+                    </div>
+                @endif
             </div>
         </div>
     </div>

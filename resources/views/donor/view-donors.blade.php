@@ -56,6 +56,10 @@
                                 <td>{{ Str::replace('_', ' ', $donor->district) }}</td>
                             </tr>
                             <tr>
+                                <th>Country</th>
+                                <td>{{ Str::replace('_', ' ', $donor->country) }}</td>
+                            </tr>
+                            <tr>
                                 <th>Pincode</th>
                                 <td>{{ $donor->pincode }}</td>
                             </tr>

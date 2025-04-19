@@ -97,6 +97,7 @@ class DonorsController extends Controller
         $donor->address1 = $request->address1;
         $donor->address2 = $request->address2;
         $donor->district = $request->district;
+        $donor->country = $request->country;
         $donor->state = $request->state;
         $donor->dob = $request->dob;
         $donor->pincode = $request->pincode;
@@ -273,7 +274,13 @@ class DonorsController extends Controller
 
         $donors = Donor::when(request()->has('id'), function ($query) {
             return $query->where('id', request('id'));
+        })->when($session_id, function ($query1) use ($session_id) {
+            return $query1->whereIn('id', $session_id);
         })->get();
+
+        if (!count($donors)) {
+            return back()->with('status', 'No data available. Unable print');
+        }
 
         foreach ($donors as $key => $donor) {
             $print = new Printable;
@@ -295,7 +302,15 @@ class DonorsController extends Controller
 
         $donors = Donor::when(request()->has('id'), function ($query) {
             return $query->where('id', request('id'));
+        })->when($session_id, function ($query1) use ($session_id) {
+            return $query1->whereIn('id', $session_id);
         })->get();
+
+
+        if (!count($donors)) {
+            return back()->with('status', 'No data available. Unable print');
+        }
+
 
         foreach ($donors as $key => $donor) {
             $print = new Printable;

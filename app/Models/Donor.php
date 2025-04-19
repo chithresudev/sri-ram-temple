@@ -26,10 +26,11 @@ class Donor extends Model
         $address1 = ($this->address1 != '') ? $this->address1 : '';
         $address2 = ($this->address2 != '') ? $this->address2 : '';
         $district = ($this->district != '') ? $this->district : '';
+        $country = ($this->country != '') ? $this->country : '';
         $city = ($this->city != '') ? $this->city : '';
         $state = ($this->state != '') ? $this->state : '';
         $pincode = ($this->pincode != '') ? $this->pincode : '';
-        return  $address1 . ',' . $address2 . ',' . $city . ',' . Str::before($district, '_') . ', ' . $state . ' - ' . $pincode . '.';
+        return  $address1 . ',' . $address2 . ',' . $city . ',' . Str::before($district, '_') . ', ' . $state . ' - ' . $pincode . '.' . $country;
     }
 
     public function getPhoneDetailsAttribute()

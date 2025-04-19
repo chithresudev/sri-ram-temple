@@ -18,6 +18,7 @@ return new class extends Migration
             $table->string('address2')->nullable();
             $table->string('city')->nullable();
             $table->string('district')->nullable();
+            $table->string('country')->nullable();
             $table->string('state')->nullable();
             $table->string('pincode')->nullable(); // Ensure it's a string for leading zeros
             $table->string('phone1')->nullable(); // Phone numbers can be more than 10 digits

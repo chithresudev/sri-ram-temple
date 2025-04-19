@@ -136,7 +136,8 @@
                     <p>{{ $donor->address1 }},</p>
                     <p>{{ $donor->address2 }},</p>
                     <p>{{ $donor->city }},</p>
-                    <p>{{ Str::before($donor->district, '_') . ', ' . $donor->state . ' - ' . $donor->pincode }}</p>
+                    <p>{{ Str::before($donor->district, '_') . ', ' . $donor->state . ' - ' . $donor->pincode . ' - ' . $donor->country }}
+
                     <p>Phone: {{ $donor->phone_details }}</p>
                 </div>
             @endforeach

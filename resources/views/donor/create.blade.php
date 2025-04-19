@@ -63,7 +63,10 @@
                                     <label for="state">State
                                         <span class="required">*</span>
                                     </label>
-                                    <select name="state" class="custom-select" id="state" required>
+
+                                    <input type="text" class="form-control" name="state" id="state" required>
+
+                                    {{-- <select name="state" class="custom-select" id="state" required>
                                         <option value="" disabled selected>Select a State</option>
                                         <!-- States -->
                                         <option value="andhra_pradesh">Andhra Pradesh - ஆந்திரப் பிரதேசம்</option>
@@ -106,7 +109,7 @@
                                         <option value="ladakh">Ladakh - லடாக்</option>
                                         <option value="puducherry">Puducherry - புதுச்சேரி</option>
                                         <option value="jammu_kashmir">Jammu and Kashmir - ஜம்மு மற்றும் காஷ்மீர்</option>
-                                    </select>
+                                    </select> --}}
 
                                 </div>
 
@@ -114,9 +117,12 @@
 
                                 <div class="col-md-4">
                                     <label for="type">District
-                                        <span class="required">*</span>
+                                        {{-- <span class="required">*</span> --}}
                                     </label>
 
+                                    <input type="text" class="form-control" name="district" id="district">
+
+                                    {{-- 
                                     <select class="custom-select"name="district" id="district" required>
                                         <option value="" disabled selected>Select a District</option>
                                         <option value="ariyalur">Ariyalur - அரியலூர்</option>
@@ -157,12 +163,21 @@
                                         <option value="kallakurichi">Kallakurichi - கல்லக்குறிச்சி</option>
                                         <option value="tirupathur">Tirupathur - திருப்பத்தூர்</option>
 
-                                    </select>
+                                    </select> --}}
 
                                 </div>
+
+
                             </div>
 
                             <div class="form-row custom-form-row">
+                                <div class="col-md-4">
+                                    <label for="country">Country
+                                        {{-- <span class="required">*</span> --}}
+                                    </label>
+                                    <input type="text" class="form-control" name="country" id="country" required>
+                                </div>
+
                                 <div class="col-md-4">
                                     <label for="head_phone1">Phone1
                                         <span class="required">*</span>
@@ -177,14 +192,16 @@
                                     <input type="text" class="form-control" name="phone2" id="phone2">
                                 </div>
 
+
+                            </div>
+                            <div class="form-row custom-form-row">
                                 <div class="col-md-4">
                                     <label for="pincode">Pincode
                                         <span class="required">*</span>
                                     </label>
-                                    <input type="number" maxlength="6" class="form-control" name="pincode"
-                                        id="pincode" required>
+                                    <input type="number" maxlength="6" class="form-control" name="pincode" id="pincode"
+                                        required>
                                 </div>
-
                             </div>
 
 
